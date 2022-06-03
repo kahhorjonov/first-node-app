@@ -1,11 +1,10 @@
-// const logger = require("./logger");
+const EventEmitter = require("event");
+const emitter = new EventEmitter();
 
-// logger.log("message");
+// Register Listeners
+emitter.on("messageLogged", (arg) => {
+  console.log("listener called", arg);
+});
 
-const os = require("os");
-
-const totalMemory = os.totalmem();
-const freeMemory = os.freemem();
-const user = os.userInfo();
-
-console.log(user);
+const log = require("./logger");
+log("message");
